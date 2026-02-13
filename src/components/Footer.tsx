@@ -46,7 +46,9 @@ const Footer = () => {
             <h4 className="font-semibold text-white mb-4 text-sm">Contato</h4>
             <ul className="space-y-3">
               <li className="flex items-center gap-2 text-sm">
-                <Phone className="w-4 h-4 text-primary" /> (11) 99999-9999
+                <a href="https://wa.me/5511999999999" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-white transition-colors">
+                  <Phone className="w-4 h-4 text-primary" /> (11) 99999-9999 · WhatsApp
+                </a>
               </li>
               <li className="flex items-center gap-2 text-sm">
                 <Mail className="w-4 h-4 text-primary" /> contato@odontoclinica.com.br

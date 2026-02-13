@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Phone } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const navItems = [
@@ -60,10 +60,6 @@ const Header = () => {
         </nav>
 
         <div className="hidden md:flex items-center gap-3">
-          <a href="tel:+5511999999999" className={`flex items-center gap-1.5 text-sm font-medium ${isScrolled ? "text-foreground" : "text-white"}`}>
-            <Phone className="w-4 h-4" />
-            (11) 99999-9999
-          </a>
           <Button onClick={() => scrollTo("#contato")} size="sm" className="rounded-full px-5 font-semibold shadow-lg shadow-primary/25">
             Agendar Consulta
           </Button>
