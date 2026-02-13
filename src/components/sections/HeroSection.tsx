@@ -73,9 +73,8 @@ const HeroSection = () => {
             </Button>
             <Button
               size="lg"
-              variant="outline"
               onClick={() => scrollTo("#tratamentos")}
-              className="rounded-full px-8 py-6 text-base font-semibold border-white/20 text-white hover:bg-white/10 hover:text-white backdrop-blur-sm"
+              className="rounded-full px-8 py-6 text-base font-semibold bg-white/15 backdrop-blur-md text-white border border-white/30 hover:bg-white hover:text-foreground hover:scale-105 shadow-lg shadow-white/10 transition-all duration-300"
             >
               Conheça Nossos Tratamentos
             </Button>
