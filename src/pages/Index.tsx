@@ -1,12 +1,29 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import Header from "@/components/Header";
+import HeroSection from "@/components/sections/HeroSection";
+import DifferentialsSection from "@/components/sections/DifferentialsSection";
+import TreatmentsSection from "@/components/sections/TreatmentsSection";
+import GallerySection from "@/components/sections/GallerySection";
+import SmileSimulatorSection from "@/components/sections/SmileSimulatorSection";
+import BlogSection from "@/components/sections/BlogSection";
+import ContactSection from "@/components/sections/ContactSection";
+import Footer from "@/components/Footer";
+import ScrollToTop from "@/components/ScrollToTop";
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen bg-background">
+      <Header />
+      <main>
+        <HeroSection />
+        <DifferentialsSection />
+        <TreatmentsSection />
+        <GallerySection />
+        <SmileSimulatorSection />
+        <BlogSection />
+        <ContactSection />
+      </main>
+      <Footer />
+      <ScrollToTop />
     </div>
   );
 };
