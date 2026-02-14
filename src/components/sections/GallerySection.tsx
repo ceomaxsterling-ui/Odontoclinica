@@ -2,40 +2,42 @@ import { useState } from "react";
 import { ScrollAnimation } from "@/components/ScrollAnimation";
 import { Star, ChevronLeft, ChevronRight, Quote } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import beforeAfter1 from "@/assets/before-after-1.jpg";
+import beforeAfter2 from "@/assets/before-after-2.jpg";
+import beforeAfter3 from "@/assets/before-after-3.jpg";
 
-const testimonials = [
+const cases = [
   {
+    image: beforeAfter1,
+    treatment: "Clareamento Dental",
+    testimonial: "Meu sorriso nunca esteve tão branco! O resultado foi incrível e o processo foi indolor.",
     name: "Maria Silva",
     role: "Paciente há 3 anos",
-    text: "A equipe da OdontoClínica transformou completamente meu sorriso. O atendimento é excepcional e os resultados superaram todas as minhas expectativas!",
     rating: 5,
   },
   {
-    name: "Carlos Oliveira",
-    role: "Paciente há 2 anos",
-    text: "Sempre tive medo de dentista, mas aqui me senti acolhido desde a primeira consulta. A anestesia sem dor é real — mudou minha vida!",
-    rating: 5,
-  },
-  {
+    image: beforeAfter2,
+    treatment: "Lentes de Contato Dental",
+    testimonial: "As lentes ficaram tão naturais que todos elogiam. Profissionais incríveis e tecnologia de ponta.",
     name: "Ana Beatriz Costa",
     role: "Paciente há 1 ano",
-    text: "Fiz minhas lentes de contato dental aqui e o resultado ficou tão natural que todos elogiam. Profissionais incríveis e tecnologia de ponta.",
     rating: 5,
   },
   {
+    image: beforeAfter3,
+    treatment: "Implantes Dentários",
+    testimonial: "A diferença na minha qualidade de vida é enorme. O planejamento 3D me deu total segurança.",
     name: "Roberto Santos",
     role: "Paciente há 5 anos",
-    text: "Coloquei implantes e a diferença na minha qualidade de vida é enorme. O planejamento 3D me deu total segurança no procedimento.",
     rating: 5,
   },
 ];
 
 const GallerySection = () => {
   const [current, setCurrent] = useState(0);
-  const [sliderPos, setSliderPos] = useState(50);
 
-  const next = () => setCurrent((c) => (c + 1) % testimonials.length);
-  const prev = () => setCurrent((c) => (c - 1 + testimonials.length) % testimonials.length);
+  const next = () => setCurrent((c) => (c + 1) % cases.length);
+  const prev = () => setCurrent((c) => (c - 1 + cases.length) % cases.length);
 
   return (
     <section id="resultados" className="section-padding bg-background">
@@ -45,89 +47,61 @@ const GallerySection = () => {
             Resultados Reais
           </span>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Galeria de Sorrisos Transformados
+            Sorrisos Que Transformamos
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-            Veja o que nossos pacientes dizem e os resultados que alcançamos juntos.
+            Cada sorriso conta uma história de confiança e transformação.
           </p>
         </ScrollAnimation>
 
-        {/* Before/After Slider */}
-        <ScrollAnimation className="max-w-2xl mx-auto mb-20">
-          <div className="relative rounded-2xl overflow-hidden shadow-xl border border-border aspect-[16/10] cursor-col-resize select-none"
-            onMouseMove={(e) => {
-              const rect = e.currentTarget.getBoundingClientRect();
-              setSliderPos(((e.clientX - rect.left) / rect.width) * 100);
-            }}
-            onTouchMove={(e) => {
-              const rect = e.currentTarget.getBoundingClientRect();
-              const touch = e.touches[0];
-              setSliderPos(((touch.clientX - rect.left) / rect.width) * 100);
-            }}
-          >
-            {/* After */}
-            <img
-              src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=800&h=500&fit=crop"
-              alt="Depois do tratamento"
-              className="absolute inset-0 w-full h-full object-cover"
-              loading="lazy"
-            />
-            {/* Before */}
-            <div className="absolute inset-0 overflow-hidden" style={{ width: `${sliderPos}%` }}>
-              <img
-                src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=800&h=500&fit=crop"
-                alt="Antes do tratamento"
-                className="absolute inset-0 w-full h-full object-cover"
-                style={{ width: `${(100 / sliderPos) * 100}%`, maxWidth: "none" }}
-                loading="lazy"
-              />
-            </div>
-            {/* Divider */}
-            <div className="absolute top-0 bottom-0 w-0.5 bg-white shadow-lg z-10" style={{ left: `${sliderPos}%` }}>
-              <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-white shadow-xl flex items-center justify-center">
-                <ChevronLeft className="w-4 h-4 text-foreground -mr-1" />
-                <ChevronRight className="w-4 h-4 text-foreground -ml-1" />
-              </div>
-            </div>
-            {/* Labels */}
-            <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-black/50 text-white text-xs font-semibold backdrop-blur-sm">Antes</div>
-            <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-black/50 text-white text-xs font-semibold backdrop-blur-sm">Depois</div>
-          </div>
-          <p className="text-center text-xs text-muted-foreground mt-3">
-            * Resultados podem variar de acordo com cada paciente. Imagens ilustrativas.
-          </p>
-        </ScrollAnimation>
-
-        {/* Testimonials Carousel */}
+        {/* Cases Carousel */}
         <ScrollAnimation>
-          <div className="max-w-3xl mx-auto relative">
-            <div className="bg-card rounded-3xl p-8 md:p-12 shadow-lg border border-border relative overflow-hidden">
-              <Quote className="absolute top-6 right-6 w-16 h-16 text-primary/5" />
-              <div className="flex gap-1 mb-4">
-                {[...Array(testimonials[current].rating)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 fill-amber-400 text-amber-400" />
-                ))}
-              </div>
-              <p className="text-foreground text-lg md:text-xl leading-relaxed mb-6 italic">
-                "{testimonials[current].text}"
-              </p>
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                  <span className="text-primary font-bold text-lg">{testimonials[current].name[0]}</span>
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-card rounded-3xl overflow-hidden shadow-xl border border-border">
+              <div className="grid grid-cols-1 md:grid-cols-2">
+                {/* Image */}
+                <div className="relative aspect-square md:aspect-auto">
+                  <img
+                    src={cases[current].image}
+                    alt={`Resultado ${cases[current].treatment}`}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute top-4 left-4 px-3 py-1.5 rounded-full bg-primary text-primary-foreground text-xs font-semibold">
+                    {cases[current].treatment}
+                  </div>
                 </div>
-                <div>
-                  <p className="font-semibold text-foreground">{testimonials[current].name}</p>
-                  <p className="text-sm text-muted-foreground">{testimonials[current].role}</p>
+
+                {/* Testimonial */}
+                <div className="p-8 md:p-10 flex flex-col justify-center">
+                  <Quote className="w-10 h-10 text-primary/15 mb-4" />
+                  <div className="flex gap-1 mb-4">
+                    {[...Array(cases[current].rating)].map((_, i) => (
+                      <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
+                    ))}
+                  </div>
+                  <p className="text-foreground text-lg leading-relaxed mb-6 italic">
+                    "{cases[current].testimonial}"
+                  </p>
+                  <div className="flex items-center gap-3">
+                    <div className="w-11 h-11 rounded-full bg-primary/10 flex items-center justify-center">
+                      <span className="text-primary font-bold text-base">{cases[current].name[0]}</span>
+                    </div>
+                    <div>
+                      <p className="font-semibold text-foreground text-sm">{cases[current].name}</p>
+                      <p className="text-xs text-muted-foreground">{cases[current].role}</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
 
+            {/* Navigation */}
             <div className="flex items-center justify-center gap-4 mt-6">
-              <Button variant="outline" size="icon" onClick={prev} className="rounded-full w-10 h-10">
+              <Button variant="outline" size="icon" onClick={prev} className="rounded-full w-10 h-10 border-border">
                 <ChevronLeft className="w-5 h-5" />
               </Button>
               <div className="flex gap-2">
-                {testimonials.map((_, i) => (
+                {cases.map((_, i) => (
                   <button
                     key={i}
                     onClick={() => setCurrent(i)}
@@ -137,10 +111,14 @@ const GallerySection = () => {
                   />
                 ))}
               </div>
-              <Button variant="outline" size="icon" onClick={next} className="rounded-full w-10 h-10">
+              <Button variant="outline" size="icon" onClick={next} className="rounded-full w-10 h-10 border-border">
                 <ChevronRight className="w-5 h-5" />
               </Button>
             </div>
+
+            <p className="text-center text-xs text-muted-foreground mt-4">
+              * Resultados podem variar de acordo com cada paciente.
+            </p>
           </div>
         </ScrollAnimation>
       </div>

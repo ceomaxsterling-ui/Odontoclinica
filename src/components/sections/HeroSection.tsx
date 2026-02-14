@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ChevronDown, Star, Shield, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import heroImage from "@/assets/hero-smile.jpg";
 
 const floatingCards = [
   { icon: Star, label: "+5.000 Sorrisos", delay: 0.8 },
@@ -14,90 +15,111 @@ const HeroSection = () => {
   };
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[hsl(222,62%,12%)] via-[hsl(220,80%,20%)] to-[hsl(220,100%,30%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,hsl(220,100%,55%,0.15),transparent_60%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,hsl(220,100%,55%,0.1),transparent_50%)]" />
-
-      {/* Subtle grid pattern */}
-      <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")" }} />
+    <section id="hero" className="relative min-h-screen flex items-center overflow-hidden bg-background">
+      {/* Subtle gradient accent */}
+      <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-primary/5 to-transparent" />
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -translate-x-1/2 translate-y-1/2" />
 
       <div className="relative container mx-auto px-4 pt-24 pb-16">
-        <div className="max-w-3xl">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-          >
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-sm border border-white/10 text-white/80 text-sm font-medium mb-6">
-              <Sparkles className="w-4 h-4 text-primary" />
-              Clínica Referência em Odontologia
-            </span>
-          </motion.div>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6"
-          >
-            Transforme Seu Sorriso.{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[hsl(220,100%,70%)] to-[hsl(200,100%,75%)]">
-              Viva com Confiança.
-            </span>
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-            className="text-lg md:text-xl text-white/70 mb-8 max-w-xl leading-relaxed"
-          >
-            Tecnologia de ponta, equipe especializada e um atendimento humanizado
-            que coloca o seu bem-estar em primeiro lugar.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
-            className="flex flex-col sm:flex-row gap-4"
-          >
-            <Button
-              size="lg"
-              onClick={() => scrollTo("#contato")}
-              className="rounded-full px-8 py-6 text-base font-semibold shadow-xl shadow-primary/30 hover:shadow-2xl hover:shadow-primary/40 transition-all duration-300 hover:scale-105"
-            >
-              Agende Sua Consulta Gratuita
-            </Button>
-            <Button
-              size="lg"
-              onClick={() => scrollTo("#tratamentos")}
-              className="rounded-full px-8 py-6 text-base font-semibold bg-white/15 backdrop-blur-md text-white border border-white/30 hover:bg-white hover:text-foreground hover:scale-105 shadow-lg shadow-white/10 transition-all duration-300"
-            >
-              Conheça Nossos Tratamentos
-            </Button>
-          </motion.div>
-        </div>
-
-        {/* Floating cards */}
-        <div className="hidden lg:flex absolute right-8 top-1/2 -translate-y-1/2 flex-col gap-4">
-          {floatingCards.map((card, i) => (
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* Left - Text */}
+          <div>
             <motion.div
-              key={i}
-              initial={{ opacity: 0, x: 40 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: card.delay, ease: "easeOut" }}
-              className="glass-card rounded-2xl px-5 py-4 flex items-center gap-3 animate-float"
-              style={{ animationDelay: `${i * 0.5}s` }}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
             >
-              <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center">
-                <card.icon className="w-5 h-5 text-primary" />
-              </div>
-              <span className="text-sm font-semibold text-foreground whitespace-nowrap">{card.label}</span>
+              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-6">
+                <Sparkles className="w-4 h-4" />
+                Clínica Referência em Odontologia
+              </span>
             </motion.div>
-          ))}
+
+            <motion.h1
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+              className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6"
+            >
+              Transforme Seu Sorriso.{" "}
+              <span className="text-gradient">
+                Viva com Confiança.
+              </span>
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+              className="text-lg md:text-xl text-muted-foreground mb-8 max-w-xl leading-relaxed"
+            >
+              Tecnologia de ponta, equipe especializada e um atendimento humanizado
+              que coloca o seu bem-estar em primeiro lugar.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+              className="flex flex-col sm:flex-row gap-4"
+            >
+              <Button
+                size="lg"
+                onClick={() => scrollTo("#contato")}
+                className="rounded-full px-8 py-6 text-base font-semibold shadow-xl shadow-primary/30 hover:shadow-2xl hover:shadow-primary/40 transition-all duration-300 hover:scale-105"
+              >
+                Agende Sua Consulta Gratuita
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                onClick={() => scrollTo("#tratamentos")}
+                className="rounded-full px-8 py-6 text-base font-semibold border-primary/30 text-primary hover:bg-primary hover:text-primary-foreground hover:scale-105 transition-all duration-300"
+              >
+                Conheça Nossos Tratamentos
+              </Button>
+            </motion.div>
+
+            {/* Floating cards - mobile visible */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.9, ease: "easeOut" }}
+              className="flex flex-wrap gap-3 mt-10"
+            >
+              {floatingCards.map((card, i) => (
+                <div
+                  key={i}
+                  className="bg-card rounded-2xl px-4 py-3 flex items-center gap-3 shadow-md border border-border"
+                >
+                  <div className="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center">
+                    <card.icon className="w-4 h-4 text-primary" />
+                  </div>
+                  <span className="text-sm font-semibold text-foreground whitespace-nowrap">{card.label}</span>
+                </div>
+              ))}
+            </motion.div>
+          </div>
+
+          {/* Right - Image */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
+            className="relative hidden lg:block"
+          >
+            <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-primary/10">
+              <img
+                src={heroImage}
+                alt="Sorriso radiante - OdontoClínica"
+                className="w-full h-auto object-cover aspect-[4/3]"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/10 to-transparent" />
+            </div>
+            {/* Decorative elements */}
+            <div className="absolute -top-4 -right-4 w-24 h-24 bg-primary/10 rounded-full blur-2xl" />
+            <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-accent rounded-full blur-2xl" />
+          </motion.div>
         </div>
       </div>
 
@@ -109,8 +131,8 @@ const HeroSection = () => {
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer"
         onClick={() => scrollTo("#diferenciais")}
       >
-        <span className="text-white/50 text-xs font-medium tracking-widest uppercase">Explore</span>
-        <ChevronDown className="w-5 h-5 text-white/50 animate-bounce-gentle" />
+        <span className="text-muted-foreground text-xs font-medium tracking-widest uppercase">Explore</span>
+        <ChevronDown className="w-5 h-5 text-muted-foreground animate-bounce-gentle" />
       </motion.div>
     </section>
   );

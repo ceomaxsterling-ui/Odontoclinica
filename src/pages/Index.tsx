@@ -3,7 +3,7 @@ import HeroSection from "@/components/sections/HeroSection";
 import DifferentialsSection from "@/components/sections/DifferentialsSection";
 import TreatmentsSection from "@/components/sections/TreatmentsSection";
 import GallerySection from "@/components/sections/GallerySection";
-import SmileSimulatorSection from "@/components/sections/SmileSimulatorSection";
+import FAQSection from "@/components/sections/FAQSection";
 import BlogSection from "@/components/sections/BlogSection";
 import ContactSection from "@/components/sections/ContactSection";
 import Footer from "@/components/Footer";
@@ -19,7 +19,7 @@ const Index = () => {
         <DifferentialsSection />
         <TreatmentsSection />
         <GallerySection />
-        <SmileSimulatorSection />
+        <FAQSection />
         <BlogSection />
         <ContactSection />
       </main>
