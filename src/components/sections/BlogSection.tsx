@@ -34,7 +34,7 @@ const BlogSection = () => {
   const filtered = active === "Todos" ? articles : articles.filter((a) => a.category === active);
 
   return (
-    <section id="blog" className="section-padding bg-secondary/30">
+    <section id="blog" className="section-padding bg-accent/30">
       <div className="container mx-auto">
         <ScrollAnimation className="text-center mb-12">
           <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-4">

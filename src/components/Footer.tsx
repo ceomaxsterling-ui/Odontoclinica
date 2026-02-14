@@ -4,7 +4,7 @@ const Footer = () => {
   const scrollTo = (id: string) => document.querySelector(id)?.scrollIntoView({ behavior: "smooth" });
 
   return (
-    <footer className="bg-[hsl(222,62%,10%)] text-white/70 pt-16 pb-8">
+    <footer className="bg-foreground text-white/70 pt-16 pb-8">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           {/* Brand */}
