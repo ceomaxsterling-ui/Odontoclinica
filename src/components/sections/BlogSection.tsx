@@ -18,7 +18,7 @@ const articles = [
     snippet: "Guia completo sobre lentes de contato dental: indicações, procedimento, cuidados e resultados.",
     category: "Estética",
     date: "08 Fev 2026",
-    image: "https://images.unsplash.com/photo-1445527815700-7035aa31ca68?w=400&h=250&fit=crop",
+    image: "https://images.unsplash.com/photo-1606265752439-1f18756aa5fc?w=400&h=250&fit=crop",
   },
   {
     title: "Implantes Dentários Modernos: Evolução e Benefícios",
