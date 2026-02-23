@@ -1,5 +1,5 @@
 import { ScrollAnimation } from "@/components/ScrollAnimation";
-import { Monitor, HeartPulse, ShieldCheck, Users, Award } from "lucide-react";
+import { Monitor, HeartPulse, ShieldCheck, Users, Award, MapPin } from "lucide-react";
 
 const differentials = [
   {
@@ -26,6 +26,11 @@ const differentials = [
     icon: Award,
     title: "Garantia de Satisfação",
     description: "Compromisso com a excelência e acompanhamento pós-tratamento para garantir os melhores resultados.",
+  },
+  {
+    icon: MapPin,
+    title: "Localização Privilegiada",
+    description: "Fácil acesso no coração de São Paulo, com estacionamento próprio e próximo ao transporte público.",
   },
 ];
 

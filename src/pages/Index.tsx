@@ -5,6 +5,7 @@ import TreatmentsSection from "@/components/sections/TreatmentsSection";
 import GallerySection from "@/components/sections/GallerySection";
 import FAQSection from "@/components/sections/FAQSection";
 import BlogSection from "@/components/sections/BlogSection";
+import TrustSection from "@/components/sections/TrustSection";
 import ContactSection from "@/components/sections/ContactSection";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
@@ -21,6 +22,7 @@ const Index = () => {
         <GallerySection />
         <FAQSection />
         <BlogSection />
+        <TrustSection />
         <ContactSection />
       </main>
       <Footer />
