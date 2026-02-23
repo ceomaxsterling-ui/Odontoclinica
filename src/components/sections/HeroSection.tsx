@@ -106,19 +106,19 @@ const HeroSection = () => {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
-            className="relative hidden lg:block"
+            className="relative"
           >
             <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-primary/10">
               <img
                 src={heroImage}
                 alt="Sorriso radiante - OdontoClínica"
-                className="w-full h-auto object-cover aspect-[4/3]"
+                className="w-full h-auto object-cover aspect-[3/2] lg:aspect-[4/3]"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/10 to-transparent" />
             </div>
             {/* Decorative elements */}
-            <div className="absolute -top-4 -right-4 w-24 h-24 bg-primary/10 rounded-full blur-2xl" />
-            <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-accent rounded-full blur-2xl" />
+            <div className="absolute -top-4 -right-4 w-24 h-24 bg-primary/10 rounded-full blur-2xl hidden lg:block" />
+            <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-accent rounded-full blur-2xl hidden lg:block" />
           </motion.div>
         </div>
       </div>
