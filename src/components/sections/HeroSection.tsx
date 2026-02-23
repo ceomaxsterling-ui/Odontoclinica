@@ -131,7 +131,6 @@ const HeroSection = () => {
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer"
         onClick={() => scrollTo("#diferenciais")}
       >
-        <span className="text-muted-foreground text-xs font-medium tracking-widest uppercase">Explore</span>
         <ChevronDown className="w-5 h-5 text-muted-foreground animate-bounce-gentle" />
       </motion.div>
     </section>
