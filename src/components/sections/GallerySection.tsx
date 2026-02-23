@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { ScrollAnimation } from "@/components/ScrollAnimation";
 import { Star, ChevronLeft, ChevronRight, Quote } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -33,11 +33,20 @@ const cases = [
   },
 ];
 
+const AUTOPLAY_INTERVAL = 6000;
+
 const GallerySection = () => {
   const [current, setCurrent] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
 
-  const next = () => setCurrent((c) => (c + 1) % cases.length);
+  const next = useCallback(() => setCurrent((c) => (c + 1) % cases.length), []);
   const prev = () => setCurrent((c) => (c - 1 + cases.length) % cases.length);
+
+  useEffect(() => {
+    if (isPaused) return;
+    const timer = setInterval(next, AUTOPLAY_INTERVAL);
+    return () => clearInterval(timer);
+  }, [isPaused, next]);
 
   return (
     <section id="resultados" className="section-padding bg-background">
@@ -54,17 +63,21 @@ const GallerySection = () => {
           </p>
         </ScrollAnimation>
 
-        {/* Cases Carousel */}
         <ScrollAnimation>
-          <div className="max-w-4xl mx-auto">
+          <div
+            className="max-w-4xl mx-auto"
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+          >
             <div className="bg-card rounded-3xl overflow-hidden shadow-xl border border-border">
               <div className="grid grid-cols-1 md:grid-cols-2">
                 {/* Image */}
-                <div className="relative aspect-square md:aspect-auto">
+                <div className="relative aspect-square md:aspect-auto overflow-hidden">
                   <img
                     src={cases[current].image}
                     alt={`Resultado ${cases[current].treatment}`}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover transition-opacity duration-500"
+                    key={current}
                   />
                   <div className="absolute top-4 left-4 px-3 py-1.5 rounded-full bg-primary text-primary-foreground text-xs font-semibold">
                     {cases[current].treatment}
@@ -105,8 +118,8 @@ const GallerySection = () => {
                   <button
                     key={i}
                     onClick={() => setCurrent(i)}
-                    className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-                      i === current ? "bg-primary w-6" : "bg-border hover:bg-muted-foreground"
+                    className={`h-2.5 rounded-full transition-all duration-300 ${
+                      i === current ? "bg-primary w-8" : "bg-border hover:bg-muted-foreground w-2.5"
                     }`}
                   />
                 ))}
@@ -116,12 +129,31 @@ const GallerySection = () => {
               </Button>
             </div>
 
+            {/* Progress bar */}
+            <div className="max-w-xs mx-auto mt-3 h-1 bg-border rounded-full overflow-hidden">
+              <div
+                className="h-full bg-primary rounded-full transition-all"
+                style={{
+                  width: isPaused ? `${((current + 1) / cases.length) * 100}%` : "100%",
+                  animation: isPaused ? "none" : `progress ${AUTOPLAY_INTERVAL}ms linear`,
+                }}
+                key={`${current}-${isPaused}`}
+              />
+            </div>
+
             <p className="text-center text-xs text-muted-foreground mt-4">
               * Resultados podem variar de acordo com cada paciente.
             </p>
           </div>
         </ScrollAnimation>
       </div>
+
+      <style>{`
+        @keyframes progress {
+          from { width: 0%; }
+          to { width: 100%; }
+        }
+      `}</style>
     </section>
   );
 };

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import logo from "@/assets/logo.png";
 
 const navItems = [
   { label: "Início", href: "#hero" },
@@ -37,12 +38,7 @@ const Header = () => {
     >
       <div className="container mx-auto flex items-center justify-between h-16 md:h-20 px-4">
         <a href="#hero" className="flex items-center gap-2" onClick={() => scrollTo("#hero")}>
-          <div className="w-9 h-9 rounded-xl bg-primary flex items-center justify-center">
-            <span className="text-primary-foreground font-bold text-lg">O</span>
-          </div>
-          <span className="font-bold text-lg tracking-tight text-foreground">
-            OdontoClínica
-          </span>
+          <img src={logo} alt="OdontoClínica" className="h-9 w-auto" />
         </a>
 
         <nav className="hidden md:flex items-center gap-1">

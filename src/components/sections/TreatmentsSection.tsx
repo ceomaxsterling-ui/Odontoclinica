@@ -55,7 +55,7 @@ const TreatmentsSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {treatments.map((treatment, i) => (
             <ScrollAnimation key={i} delay={i * 80}>
-              <div className="group bg-card rounded-2xl overflow-hidden shadow-sm border border-border hover:shadow-xl transition-all duration-500 hover:-translate-y-1">
+              <div className="group bg-card rounded-2xl overflow-hidden shadow-sm border border-border hover:shadow-xl hover:border-primary/20 transition-all duration-500 hover:-translate-y-2 cursor-pointer">
                 <div className="relative h-48 overflow-hidden">
                   <img
                     src={treatment.image}
@@ -66,7 +66,7 @@ const TreatmentsSection = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 </div>
                 <div className="p-6">
-                  <h3 className="text-lg font-bold text-foreground mb-2">{treatment.title}</h3>
+                  <h3 className="text-lg font-bold text-foreground mb-2 group-hover:text-primary transition-colors duration-300">{treatment.title}</h3>
                   <p className="text-muted-foreground text-sm leading-relaxed mb-4">{treatment.description}</p>
                   <Button variant="ghost" className="p-0 h-auto text-primary font-semibold text-sm group/btn hover:bg-transparent">
                     Saiba Mais

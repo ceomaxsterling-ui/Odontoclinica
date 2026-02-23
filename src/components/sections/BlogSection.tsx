@@ -11,21 +11,21 @@ const articles = [
     snippet: "Descubra hábitos simples que ajudam a preservar a brancura natural dos seus dentes no dia a dia.",
     category: "Higiene",
     date: "12 Fev 2026",
-    image: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=400&h=250&fit=crop",
+    image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&h=250&fit=crop",
   },
   {
     title: "Lentes de Contato Dental: Tudo o Que Você Precisa Saber",
     snippet: "Guia completo sobre lentes de contato dental: indicações, procedimento, cuidados e resultados.",
     category: "Estética",
     date: "08 Fev 2026",
-    image: "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=400&h=250&fit=crop",
+    image: "https://images.unsplash.com/photo-1445527815700-7035aa31ca68?w=400&h=250&fit=crop",
   },
   {
     title: "Implantes Dentários Modernos: Evolução e Benefícios",
     snippet: "Como a tecnologia 3D revolucionou os implantes dentários com mais segurança e recuperação rápida.",
     category: "Novidades",
     date: "02 Fev 2026",
-    image: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=400&h=250&fit=crop",
+    image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=400&h=250&fit=crop",
   },
 ];
 
@@ -67,7 +67,7 @@ const BlogSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filtered.map((article, i) => (
             <ScrollAnimation key={article.title} delay={i * 100}>
-              <div className="group bg-card rounded-2xl overflow-hidden shadow-sm border border-border hover:shadow-xl transition-all duration-500 hover:-translate-y-1">
+              <div className="group bg-card rounded-2xl overflow-hidden shadow-sm border border-border hover:shadow-xl hover:border-primary/20 transition-all duration-500 hover:-translate-y-1">
                 <div className="relative h-48 overflow-hidden">
                   <img
                     src={article.image}

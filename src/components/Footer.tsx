@@ -1,4 +1,5 @@
 import { Phone, Mail, MapPin, Instagram, Facebook } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const Footer = () => {
   const scrollTo = (id: string) => document.querySelector(id)?.scrollIntoView({ behavior: "smooth" });
@@ -10,10 +11,7 @@ const Footer = () => {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-9 h-9 rounded-xl bg-primary flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-lg">O</span>
-              </div>
-              <span className="font-bold text-lg text-white">OdontoClínica</span>
+              <img src={logo} alt="OdontoClínica" className="h-8 w-auto brightness-0 invert" />
             </div>
             <p className="text-sm leading-relaxed">
               Referência em odontologia de alta performance. Tecnologia, conforto e resultados excepcionais.
